@@ -1,19 +1,22 @@
 package no.hvl.dat100.javel.oppgave1;
 
+import static no.hvl.dat100.javel.oppgave1.DayPowerData.powerprices_day;
+
 public class DailyPower {
 
     // a) print power prices during a day
     public static void printPowerPrices(double[] prices) {
 
-        // TODO
-
+        for (int i = 0; i < prices.length; i++) {
+            System.out.printf("%.2f NOK ", prices[i]);
+        }
     }
 
     // b) print power usage during a day
     public static void printPowerUsage(double[] usage) {
-
-        // TODO
-
+        for (int i = 0; i < usage.length; i++) {
+            System.out.printf("%.2f kWh ", usage[i]);
+        }
     }
 
     // c) compute power usage for a single day
@@ -21,7 +24,9 @@ public class DailyPower {
 
         double sum = 0;
 
-        // TODO
+        for (int i = 0; i < usage.length; i++) {
+            sum += usage[i];
+        }
 
         return sum;
     }
@@ -31,10 +36,13 @@ public class DailyPower {
 
         double price = 0;
 
-        // TODO
+        for (int i = 0; i < usage.length; i++) {
 
-        return price;
+            price += (usage[i] * prices[i]);
+        }
+            return price;
     }
+
 
     // e) compute power support for a given usage and price
     private static final double THRESHOLD = 0.9375;
@@ -44,7 +52,13 @@ public class DailyPower {
 
         double support = 0;
 
-        // TODO
+        if (price > THRESHOLD) {
+            double differanse = price - THRESHOLD;
+            double støttePerKWh = differanse * PERCENTAGE;
+            support = usage * støttePerKWh;
+        } else {
+            support = 0;
+        }
 
         return support;
     }
@@ -54,8 +68,12 @@ public class DailyPower {
 
         double support = 0;
 
-        // TODO
+        for (int i = 0; i < usage.length; i++) {
+            double støtte = getSupport(usage[i], prices[i]);
 
+            support += støtte;
+
+        }
         return support;
     }
 
@@ -66,7 +84,9 @@ public class DailyPower {
 
         double price = 0;
 
-        // TODO
+        for (int i = 0; i < usage.length; i++) {
+            price += NORGESPRIS_KWH * usage[i];
+        }
 
         return price;
     }
@@ -76,7 +96,12 @@ public class DailyPower {
 
         double temp_max = 0;
 
-        // TODO
+        for (int i = 0; i < usage.length; i++) {
+            if (usage[i] > temp_max) {
+                temp_max = usage[i];
+
+            }
+        }
 
         return temp_max;
     }
@@ -85,7 +110,10 @@ public class DailyPower {
 
         double average = 0;
 
-        // TODO
+        for (int i = 0; i < usage.length; i++) {
+            average += usage[i] / usage.length;
+
+        }
 
         return average;
     }
