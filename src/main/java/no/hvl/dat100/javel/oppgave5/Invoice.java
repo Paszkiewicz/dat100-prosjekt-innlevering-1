@@ -34,21 +34,17 @@ public class Invoice {
 
 
     public void printInvoice() {
-        double totalusage = 0.0;
-        for (int i = 0; i < usage.length; i++) {
-            for (int j = 0; j < usage[i].length; j++) {
-                totalusage += usage[i][j];
-            }
-        }
+
+        computeAmount();
 
         System.out.println("========================");
-        System.out.println("Customer number " + c.getNumber());
+        System.out.println("Customer number " + c.getCustomer_id());
         System.out.println("Name  " + c.getName());
         System.out.println("Email " + c.getEmail());
         System.out.println("Agreement " + c.getAgreement());
         System.out.println();
         System.out.println("Month: " + month);
-        System.out.printf("Usage:      %.2f kWh%n", totalUsage);
+        System.out.printf("Usage:      %.2f kWh%n", MonthlyPower.computePowerUsage(usage));
         System.out.printf("Amount:    %.2f NOK%n", amount);
         System.out.println("========================");
 

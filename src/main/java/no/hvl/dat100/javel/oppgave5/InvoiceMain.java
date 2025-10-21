@@ -13,6 +13,19 @@ public class InvoiceMain {
         System.out.println("==============");
         System.out.println();
 
+        System.out.println("Test av printInvoice: ");
+        Customer c = new Customer("Markus", "markus@eksempel.no", 101, PowerAgreementType.SPOTPRICE);
+        Invoice invoice = new Invoice(c, "Mai", CustomerPowerUsageData.usage_month_customer1, MonthPowerData.powerprices_month);
+        invoice.printInvoice();
+        System.out.println();
+        System.out.println("Slutt av test");
+
+
+
+
+
+
+
         /*
         TODO
 
